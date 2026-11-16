@@ -24,14 +24,9 @@ body {
 }
 
 h1 {
-  margin: 8px 0 16px;
+  margin: 8px 0 24px;
   font-size: 28px;
   color: #222;
-}
-
-.subtitle {
-  color: #666;
-  margin: 0 0 16px;
 }
 
 .fetch-btn {
@@ -49,32 +44,26 @@ h1 {
   cursor: not-allowed;
 }
 
-.empty {
-  color: #666;
-  margin-top: 20px;
+.joke {
+  margin-top: 24px;
+  color: #222;
 }
 
 .setup {
-  color: #222;
-  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 .punchline {
-  margin-top: 8px;
+  font-weight: bold;
 }
 
 .error {
   color: red;
   margin-top: 20px;
-  margin-bottom: 8px;
 }
 
-.link-btn {
-  background: none;
-  border: none;
-  color: #007bff;
-  text-decoration: underline;
-  font-size: 15px;
-  cursor: pointer;
-  padding: 0;
+@media (max-width: 600px) {
+  .card {
+    padding: 24px 16px;
+  }
 }
