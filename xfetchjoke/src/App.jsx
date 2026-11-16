@@ -16,7 +16,7 @@ function App() {
       const response = await fetch(API_URL);
 
       if (!response.ok) {
-        throw new Error("Failed to fetch joke");
+        throw new Error("Request failed");
       }
 
       const data = await response.json();
@@ -32,27 +32,37 @@ function App() {
   return (
     <div className="page">
       <div className="card">
-        <h1>Fetch Joke Application</h1>
+        <h1>Random Joke</h1>
+        <p className="subtitle">Click the button to fetch a fresh one.</p>
 
         <button
           className="fetch-btn"
           onClick={fetchJoke}
           disabled={loading}
         >
-          {loading ? "Fetching..." : "Fetch Joke"}
+          {loading ? "Fetching..." : "Fetch joke"}
         </button>
 
-        {error && (
-          <p className="error">
-            Something went wrong. Please try again.
-          </p>
-        )}
-
-        {joke && (
-          <div className="joke">
-            <p className="setup">{joke.setup}</p>
-            <p className="punchline">{joke.punchline}</p>
+        {error ? (
+          <div>
+            <p className="error">Could not fetch a joke. Try again.</p>
+            <button
+              className="link-btn"
+              onClick={fetchJoke}
+              disabled={loading}
+            >
+              Try again
+            </button>
           </div>
+        ) : joke ? (
+          <div>
+            <p className="setup">{joke.setup}</p>
+            <p className="punchline">
+              <strong>{joke.punchline}</strong>
+            </p>
+          </div>
+        ) : (
+          <p className="empty">No joke yet.</p>
         )}
       </div>
     </div>
